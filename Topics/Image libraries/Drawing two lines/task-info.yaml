@@ -1,0 +1,10 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "import java.awt.Color\nimport java.awt.image.BufferedImage  \n\nfun drawLines():\
+    \ BufferedImage {\n  // Add your code here\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/16355#comment
+status: Unchecked
+record: -1

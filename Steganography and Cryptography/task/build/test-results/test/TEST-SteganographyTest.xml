@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SteganographyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-18T15:04:30" hostname="DESKTOP-6IGSS8J" time="0.463">
+  <properties/>
+  <testcase name="start" classname="SteganographyTest" time="0.463"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+Task (hide, show, exit):
+> hide
+Input image file:
+> test/testimage.png
+Output image file:
+> test/out.png
+Input Image: test/testimage.png
+Output Image: test/out.png
+Image test/out.png is saved.
+Task (hide, show, exit):
+> exit
+Bye!
+?[1;31m
+Start test 2?[0m
+Task (hide, show, exit):
+> hide
+Input image file:
+> test/notexist.png
+Output image file:
+> test/out.png
+Can't read input file!
+Task (hide, show, exit):
+> exit
+Bye!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,26 @@
+[1;31m
+Start test 1[0m
+Task (hide, show, exit):
+> hide
+Input image file:
+> test/testimage.png
+Output image file:
+> test/out.png
+ Input Image: test/testimage.png
+Output Image: test/out.png
+Image test/out.png is saved.
+Task (hide, show, exit):
+> exit
+Bye!
+[1;31m
+Start test 2[0m
+Task (hide, show, exit):
+> hide
+Input image file:
+> test/notexist.png
+Output image file:
+> test/out.png
+Can't read input file!
+Task (hide, show, exit):
+> exit
+Bye!
