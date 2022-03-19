@@ -1,71 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SteganographyTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-03-19T06:38:04" hostname="DESKTOP-6IGSS8J" time="0.448">
+<testsuite name="SteganographyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-19T07:28:50" hostname="DESKTOP-6IGSS8J" time="0.494">
   <properties/>
-  <testcase name="start" classname="SteganographyTest" time="0.448">
-    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Wrong output file. Wrong output image hash.&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;01100000000000000000000000000000&#10;Task (hide, show, exit):&#10;&gt; hide&#10;Input image file:&#10;&gt; test/testimage.png&#10;Output image file:&#10;&gt; test/out.png&#10;Message to hide:&#10;&gt; Hyperskill steganography program.&#10;Message saved in test/testimage.png image.&#10;Task (hide, show, exit):" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
-
-Wrong output file. Wrong output image hash.
-
-Please find below the output of your program during this failed test.
-Note that the '&gt;' character indicates the beginning of the input line.
-
----
-
-01100000000000000000000000000000
-Task (hide, show, exit):
-&gt; hide
-Input image file:
-&gt; test/testimage.png
-Output image file:
-&gt; test/out.png
-Message to hide:
-&gt; Hyperskill steganography program.
-Message saved in test/testimage.png image.
-Task (hide, show, exit):
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-</failure>
-  </testcase>
+  <testcase name="start" classname="SteganographyTest" time="0.494"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 01100000000000000000000000000000
@@ -79,6 +15,29 @@ Message to hide:
 > Hyperskill steganography program.
 Message saved in test/testimage.png image.
 Task (hide, show, exit):
+> show
+Input image file:
+> test/out.png
+Message:
+Hyperskill steganography program.?
+Task (hide, show, exit):
+> exit
+Bye!
+?[1;31m
+Start test 2?[0m
+01100000000000000000000000000000
+Task (hide, show, exit):
+> hide
+Input image file:
+> test/small.png
+Output image file:
+> test/out2.png
+Message to hide:
+> Hyperskill steganography program.
+The input image is not large enough to hold this message
+Task (hide, show, exit):
+> exit
+Bye!
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -2,6 +2,7 @@ package cryptography
 
 import java.awt.Color
 import java.io.File
+import java.nio.charset.Charset
 import javax.imageio.ImageIO
 
 val choiceList = listOf("hide", "show", "exit")
@@ -33,26 +34,38 @@ fun hide() {
         val inFile = File(inFileName)
         val image = ImageIO.read(inFile)
         var idx = 0
-
-        outer@ for (row in 0 until image.height) {
-            for (col in 0 until image.width ) {
-//                println(messageInBits)
+//        println(messageInBits)
+        if (image.width * image.height/3 >= messageInBits.length) {
+            outer@ for (row in 0 until image.height) {
+                for (col in 0 until image.width) {
+//
 //                idx++
 //                println(image.getRGB(col, row).bitsString())
-                image.setRGB(col, row, image.getRGB(col, row).toUInt().setBit24(messageInBits[idx++]=='1').toInt())
-
+//                val clr = Color(image.getRGB(col, row))
+//                println(messageInBits[idx])
+                    image.setRGB(
+                        col,
+                        row,
+                        image.getRGB(col, row).toUInt().setBit24(messageInBits[idx++] == '1').toInt()
+                    )
+//                val clr2 = Color(image.getRGB(col, row))
+//                println("${clr.red} ${clr.green} ${clr.blue}--> ${clr2.red} ${clr2.green} ${clr2.blue}")
 //                image.setRGB(col, row, Color(0,0,0).rgb)
 //                 image.setRGB(col, row, image.getRGB(col, row).toUInt().setBit24(idx%2==1).toInt())
 
 //                println(image.getRGB(col, row).bitsString())
 
-                if (idx == messageInBits.length)
-                    break@outer
+                    if (idx == messageInBits.length)
+                        break@outer
+                }
             }
+            val outFile = File(outFileName)
+            ImageIO.write(image, "PNG", outFile)
+            println("Message saved in $inFileName image.")
         }
-        val outFile = File(outFileName)
-        ImageIO.write(image, "PNG", outFile)
-        println("Message saved in $inFileName image.")
+        else{
+            println("The input image is not large enough to hold this message")
+        }
     } catch (ex: Exception) {
 
         println("Can't read input file!")
@@ -69,11 +82,20 @@ fun show() {
         outer@ for (row in 0 until image.height) {
             for (col in 0 until image.width ) {
                 message += (image.getRGB(col, row) and 0x01)
-                if (message.endsWith(stopMarker)) break@outer
+                if (message.endsWith(stopMarker)) {
+
+                    break@outer
+                }
             }
         }
+        val msgBytes = mutableListOf<Byte>()
+        for (i in 0..message.length-24 step 8){
+            msgBytes.add( message.substring(i,i+8).toInt(2).toByte())
+        }
+
         println("Message:")
-        println(message)
+        println(msgBytes.toByteArray().toString(Charsets.UTF_8))
+//        println(message)
 
     } catch (ex: Exception) {
         println("Can't read input file!")
@@ -92,7 +114,7 @@ fun Byte.bitsString(): String {
     val list = List(8) {
         this.toInt().shr(it).and(0x01)
     }
-    return list.map { it.toString() }.joinToString("")//.reversed()
+    return list.map { it.toString() }.joinToString("").reversed()
 }
 fun Int.bitsString(): String {
     val list = List(32) {
@@ -109,7 +131,7 @@ fun UInt.bitsString(): String {
 
 fun UInt.setBit24( bitValue:Boolean) :UInt {
 
-    return if (bitValue) this or  0x00000001u else this and 0xFFFFFFF1u
+    return if (bitValue) this or  0x00000001u else this and 0xFFFFFFFEu
 }
 fun main() {
     val b =  6u

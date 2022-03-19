@@ -189,29 +189,12 @@ files:
 - name: test/out.png
   visible: true
   learner_created: true
+- name: test/out2.png
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/160/stages/832/implement#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #1
-
-    Wrong output file. Wrong output image hash.
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    01100000000000000000000000000000
-    Task (hide, show, exit):
-    &gt; hide
-    Input image file:
-    &gt; test/testimage.png
-    Output image file:
-    &gt; test/out.png
-    Message to hide:
-    &gt; Hyperskill steganography program.
-    Message saved in test/testimage.png image.
-    Task (hide, show, exit):
-  time: Sat, 19 Mar 2022 06:38:04 UTC
+  message: Congratulations!
+  time: Sat, 19 Mar 2022 07:28:51 UTC
 record: -1
