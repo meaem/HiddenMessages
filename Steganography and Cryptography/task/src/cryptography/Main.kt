@@ -1,9 +1,8 @@
 package cryptography
 
-import java.awt.Color
 import java.io.File
-import java.nio.charset.Charset
 import javax.imageio.ImageIO
+import kotlin.experimental.xor
 
 val choiceList = listOf("hide", "show", "exit")
 val functionsList = listOf(::hide, ::show, ::exit)
@@ -20,6 +19,12 @@ fun printMenuAndGetChoice(): String {
     return choice
 }
 
+fun encryptMsg(msg: String, password: String): String {
+    val p = password.encodeToByteArray()
+    val l = p.size
+    return msg.encodeToByteArray().mapIndexed { index, byte -> (byte xor p[index % l]).bitsString() }.joinToString("")
+}
+
 fun hide() {
     println("Input image file:")
     val inFileName = readln()
@@ -28,14 +33,16 @@ fun hide() {
 
     println("Message to hide:")
     val message = readln()
-    val messageInBits = message.encodeToByteArray().map { it.bitsString() }.joinToString("") + stopMarker
+    println("password:")
+    val password = readln()
+    val messageInBits = encryptMsg(message, password) + stopMarker
 //    println(messageInBits)
     try {
         val inFile = File(inFileName)
         val image = ImageIO.read(inFile)
         var idx = 0
 //        println(messageInBits)
-        if (image.width * image.height/3 >= messageInBits.length) {
+        if (image.width * image.height / 3 >= messageInBits.length) {
             outer@ for (row in 0 until image.height) {
                 for (col in 0 until image.width) {
 //
@@ -62,8 +69,7 @@ fun hide() {
             val outFile = File(outFileName)
             ImageIO.write(image, "PNG", outFile)
             println("Message saved in $inFileName image.")
-        }
-        else{
+        } else {
             println("The input image is not large enough to hold this message")
         }
     } catch (ex: Exception) {
@@ -72,15 +78,24 @@ fun hide() {
     }
 }
 
+fun decryptMsg(cipher: ByteArray, password: String): String {
+    val p = password.encodeToByteArray()
+    val l = p.size
+    return cipher.mapIndexed { index, byte -> (byte xor p[index % l]) }
+        .toByteArray().toString(Charsets.UTF_8)
+}
+
 fun show() {
     println("Input image file:")
     val inFileName = readln()
+    println("password:")
+    val password = readln()
     var message = ""
     try {
         val inFile = File(inFileName)
         val image = ImageIO.read(inFile)
         outer@ for (row in 0 until image.height) {
-            for (col in 0 until image.width ) {
+            for (col in 0 until image.width) {
                 message += (image.getRGB(col, row) and 0x01)
                 if (message.endsWith(stopMarker)) {
 
@@ -89,12 +104,12 @@ fun show() {
             }
         }
         val msgBytes = mutableListOf<Byte>()
-        for (i in 0..message.length-24 step 8){
-            msgBytes.add( message.substring(i,i+8).toInt(2).toByte())
+        for (i in 0..message.length - 24 step 8) {
+            msgBytes.add(message.substring(i, i + 8).toInt(2).toByte())
         }
 
         println("Message:")
-        println(msgBytes.toByteArray().toString(Charsets.UTF_8))
+        println(decryptMsg(msgBytes.toByteArray(), password ) )
 //        println(message)
 
     } catch (ex: Exception) {
@@ -116,12 +131,14 @@ fun Byte.bitsString(): String {
     }
     return list.map { it.toString() }.joinToString("").reversed()
 }
+
 fun Int.bitsString(): String {
     val list = List(32) {
         this.shr(it).and(0x01)
     }
     return list.map { it.toString() }.joinToString("")//.reversed()
 }
+
 fun UInt.bitsString(): String {
     val list = List(32) {
         this.shr(it).and(0x01u)
@@ -129,12 +146,13 @@ fun UInt.bitsString(): String {
     return list.map { it.toString() }.joinToString("")//.reversed()
 }
 
-fun UInt.setBit24( bitValue:Boolean) :UInt {
+fun UInt.setBit24(bitValue: Boolean): UInt {
 
-    return if (bitValue) this or  0x00000001u else this and 0xFFFFFFFEu
+    return if (bitValue) this or 0x00000001u else this and 0xFFFFFFFEu
 }
+
 fun main() {
-    val b =  6u
+    val b = 6u
     println(b.bitsString())
 //    val c = 0xFFFFFEFFu //"0"[0].digitToInt().shl(8).toUInt()
 //    println(c.bitsString())

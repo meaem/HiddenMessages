@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SteganographyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-19T07:28:50" hostname="DESKTOP-6IGSS8J" time="0.494">
+<testsuite name="SteganographyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-19T07:52:26" hostname="DESKTOP-6IGSS8J" time="0.504">
   <properties/>
-  <testcase name="start" classname="SteganographyTest" time="0.494"/>
+  <testcase name="start" classname="SteganographyTest" time="0.504"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 01100000000000000000000000000000
@@ -13,13 +13,17 @@ Output image file:
 > test/out.png
 Message to hide:
 > Hyperskill steganography program.
+password:
+> mypassword
 Message saved in test/testimage.png image.
 Task (hide, show, exit):
 > show
 Input image file:
 > test/out.png
+password:
+> mypassword
 Message:
-Hyperskill steganography program.?
+Hyperskill steganography program.a
 Task (hide, show, exit):
 > exit
 Bye!
@@ -34,6 +38,8 @@ Output image file:
 > test/out2.png
 Message to hide:
 > Hyperskill steganography program.
+password:
+> mypassword
 The input image is not large enough to hold this message
 Task (hide, show, exit):
 > exit
